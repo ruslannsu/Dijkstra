@@ -46,7 +46,8 @@ static int FindVertexIndex(int vertex, Heap *heap)
     return -5;
 }
 
-void DijkstraAlg(AdjMatrix *matrix, int path_start, int path_end) {
+void DijkstraAlg(AdjMatrix *matrix, int path_start, int path_end)
+{
     int *lengths = CreateShortestLengths(matrix);
     int *predecessor = CreatePredecessors(matrix);
     bool *visited = CreateVisitedArr(matrix);
@@ -58,21 +59,30 @@ void DijkstraAlg(AdjMatrix *matrix, int path_start, int path_end) {
     vertex = HeapExtract(heap);
     visited[vertex - 1] = true;
     predecessor[vertex - 1] = vertex;
-    while (!IsEmpty(heap)) {
-        for (int j = 0; j < matrix->n; j++) {
-            if (visited[j] == true) {
+    while (!IsEmpty(heap))
+    {
+        for (int j = 0; j < matrix->n; j++)
+        {
+            if (visited[j] == true)
+            {
                 continue;
             }
-            if (matrix->matrix_src[vertex - 1][j] == 0) {
+            if (matrix->matrix_src[vertex - 1][j] == 0)
+            {
                 continue;
             }
-            if ((matrix->matrix_src[vertex - 1][j] + heap->keys[vertex - 1]) < heap->keys[j]) {
+            if ((matrix->matrix_src[vertex - 1][j] + heap->keys[vertex - 1]) < heap->keys[j])
+            {
                 heap->keys[j] = matrix->matrix_src[vertex - 1][j] + heap->keys[vertex - 1];
                 predecessor[j] = vertex;
-                if (lengths[j] > 0) {
-                    if (heap->keys[vertex - 1] > 0) {
+                if (lengths[j] > 0)
+                {
+                    if (heap->keys[vertex - 1] > 0)
+                    {
                         lengths[j] = matrix->matrix_src[vertex - 1][j] + heap->keys[vertex - 1];
-                    } else {
+                    } 
+                    else
+                    {
                         lengths[j] = matrix->matrix_src[vertex - 1][j];
                     }
                 }
