@@ -36,27 +36,33 @@ int main(void)
         printf("bad number of edges");
         return 0;
     }
-
     AdjMatrix *matrix = CreateAdjMatrix(n);
     int start, end, length = 0;
     int edge_counter = 0;
     unsigned long long t_length;
-    for (int i = 0; i < m; i++) {
-        if (scanf("%d %d %llu", &start, &end, &t_length) == 3) {
+    for (int i = 0; i < m; i++)
+        {
+        if (scanf("%d %d %llu", &start, &end, &t_length) == 3)
+        {
             edge_counter++;
-            if (t_length > INT_MAX) {
+            if (t_length > INT_MAX)
+            {
                 printf("bad length");
                 DestroyMatrix(matrix);
                 return 0;
-            } else {
+            } 
+            else
+            {
                 length = t_length;
             }
-            if (!VertexError(start, end, n)) {
+            if (!VertexError(start, end, n))
+            {
                 printf("bad vertex");
                 DestroyMatrix(matrix);
                 return 0;
             }
-            if (length == INT_MAX) {
+            if (length == INT_MAX)
+            {
                 length--;
             }
             AddMatrixValue(matrix, start - 1, end - 1, length);
