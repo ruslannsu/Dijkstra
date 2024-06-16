@@ -41,7 +41,7 @@ int main(void)
     int edge_counter = 0;
     unsigned long long t_length;
     for (int i = 0; i < m; i++)
-        {
+    {
         if (scanf("%d %d %llu", &start, &end, &t_length) == 3)
         {
             edge_counter++;
